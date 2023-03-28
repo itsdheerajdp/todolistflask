@@ -1,0 +1,65 @@
+{% extends 'basetemplate.html' %}
+{% block title %}
+    ToDo List Home
+{% endblock title %}
+{% block body %}
+<nav>
+    <h1>Your ToDo List</h1>
+    <!-- <div class="animation start-home"></div> -->
+</nav>
+
+<form class="container" action="/formsubmit" method="POST"> <!--form action ='/' means after submiting the form we want to come to link '/' and method means we want to post the information of this form-->
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label"><h4>Title</h4></label>
+        <input type="text" class="form-control" name="titlefromform"  id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"><h4>Description</h4></label>
+        <input type="text" class="form-control" name="descfromform"  id="exampleInputPassword1">
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary"><h4>Add Item</h4></button>
+      </div>
+   
+</form>
+<div class="container">
+    <table class="table table-bordered border-light my-5">
+        <thead>
+            {% if alltodo|length==0 %}
+            <div class="alert alert-danger my-5" role="alert">
+                <h1>No ToDo Found in ToDo List</h1>
+              </div>   
+            {% else %}
+                
+          
+            <tr style="color:black;font-size:20px;">
+                <th scope="col" class="text-center">S.No.</th>
+                <th scope="col" class="text-center">Title</th>
+                <th scope="col" class="text-center">Description</th>
+                <th scope="col" class="text-center">Date</th>
+                <th scope="col" class="text-center">Actions</th>
+            </tr>
+        </thead>
+       
+
+            <!-- below is the jinja for loop to use the value transfered by python file to html file using jinja templating engine -->
+            {% for todo in alltodo %}
+            <tbody> 
+            <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{todo.Title}}</td>
+            <td>{{todo.Description}}</td>
+            <td>{{todo.Date_created}}</td>
+            <td><a href="/update/{{todo.SNO}}"><button type="button" class="btn btn-success mx-2">Update</button></a><a href="/delete/{{todo.SNO}}"><button type="button" class="btn btn-danger mx-2">Delete</button></a></td>
+             </tr>
+            </tbody>
+            {% endfor %}
+            {% endif %}
+                
+           
+            
+     
+    </table>
+</div>
+
+{% endblock body %}

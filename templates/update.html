@@ -1,0 +1,20 @@
+{% extends 'basetemplate.html' %}
+{% block title %}
+    Update ToDo
+{% endblock title %}
+{% block body %}
+<form class="container my-5" action="/update/{{todo.SNO}}" method="POST"> <!--form action ='/' means after submiting the form we want to come to link '/' and method means we want to post the information of this form-->
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label"><h4>Title</h4></label>
+        <input type="" class="form-control" name="titlefromform"  value="{{todo.Title}}"   >
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"><h4>Description</h4></label>
+        <input type="text" class="form-control" name="descfromform" value="{{todo.Description}}">
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary"><h4>Update Item</h4></button>
+      </div>
+   
+</form>
+{% endblock body %}
