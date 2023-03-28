@@ -1,4 +1,0 @@
-step 1 -> in main python file app.py in app.run() we need to set debug=False because in production level we don't want to show everyone what problem is going on with our code but while we are creating our website we wanted to know the errors that's why we setted it as True 
-and we need to set host='0.0.0.0'
-
-how i get requirement.txt => with command ->  pip freeze > requirement.txt
